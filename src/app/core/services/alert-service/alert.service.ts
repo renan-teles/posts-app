@@ -11,19 +11,35 @@ export class AlertService {
   private timeout: number | null = null;
 
   success(message: string): void {
-    this._alert.set({ role: 'success', message });
+    this._alert.set({
+      alertClass: 'alert-success',
+      alertIcon: 'bi-check-circle-fill',
+      message
+    });
   }
 
   error(message: string): void {
-    this._alert.set({ role: 'error', message });
+    this._alert.set({
+      alertClass: 'alert-error',
+      alertIcon: 'bi-x-circle-fill',
+      message
+    });
   }
 
   info(message: string): void {
-    this._alert.set({ role: 'info', message });
+    this._alert.set({
+      alertClass: 'alert-info',
+      alertIcon: 'bi-info-circle-fill',
+      message
+    });
   }
 
   warning(message: string): void {
-    this._alert.set({ role: 'warning', message });
+    this._alert.set({
+      alertClass: 'alert-warning',
+      alertIcon: 'bi-exclamation-triangle-fill',
+      message
+    });
   }
 
   timeoutToClear(timeMillis: number = 3000) {
@@ -32,6 +48,6 @@ export class AlertService {
 
   clear(): void {
     if (this.timeout) clearTimeout(this.timeout);
-    if (this._alert()) this._alert.set(null);
+    this._alert.set(null);
   }
 }

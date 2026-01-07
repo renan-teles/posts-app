@@ -17,6 +17,8 @@
 
   <div class="modal-footer">
     <button class="btn btn-secondary" (click)="activeModal.dismiss()">Cancelar</button>
-    <button class="btn {{ btnConfirmClass }}" (click)="activeModal.close(true)">Confirmar</button>
+    <button class="btn" [ngClass]="btnConfirmClass" (click)="activeModal.close(true)">
+      Confirmar
+    </button>
   </div>
 </div>

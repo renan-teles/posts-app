@@ -1,5 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
-
+/* HTML - GENERAL */
 html,
 body {
   height: 100% !important;
@@ -28,6 +27,7 @@ body {
   border-color: black;
 }
 
+/* INPUTS */
 .is-invalid {
   border-color: red !important;
 }
