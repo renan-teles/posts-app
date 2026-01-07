@@ -1,0 +1,17 @@
+.post-card {
+  height: 280px;
+}
+
+.post-title {
+  min-height: 48px;
+  max-height: 48px;
+  overflow: hidden;
+}
+
+.post-body {
+  flex-grow: 1;
+  overflow: hidden;
+  display: -webkit-box;
+  /* -webkit-line-clamp: 4; */
+  -webkit-box-orient: vertical;
+}

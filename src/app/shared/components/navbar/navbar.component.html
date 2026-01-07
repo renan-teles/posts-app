@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-sm shadow-sm fixed-top" [ngClass]="currentClass()">
+  <div class="container-md">
+    <a class="navbar-brand" [ngClass]="currentClass()" routerLink="/posts"> PostApp </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto gap-2">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [ngClass]="currentClass()"
+            routerLink="/posts"
+            routerLinkActive="active"
+          >
+            Postagens
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            [ngClass]="currentClass()"
+            routerLink="/create-post"
+            routerLinkActive="active"
+          >
+            Criar Postagem
+          </a>
+        </li>
+        <li class="nav-item d-flex justify-content-end justify-content-sm-center">
+          <button class="btn" [ngClass]="currentClass()" (click)="toggleTheme()">
+            <i [ngClass]="currentIcon()"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

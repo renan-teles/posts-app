@@ -1,0 +1,15 @@
+<div class="col-12">
+  @if(loading()){
+  <app-loading [message]="'Carregando posts...'" />
+  } @else if(error()){
+  <app-error [message]="'Erro ao carregar comentários.'" />
+  } @else {
+  <div class="row row-cols-1 g-3">
+    @for(comment of comments(); track comment.id){
+    <div class="col">
+      <app-post-comment-card [comment]="comment" />
+    </div>
+    }
+  </div>
+  }
+</div>

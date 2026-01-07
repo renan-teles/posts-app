@@ -1,0 +1,22 @@
+<div class="card w-100 post-card" [ngClass]="currentClass()">
+  <div class="card-body d-flex flex-column">
+    <h5 class="card-title post-title">{{ post().title | titleCapitalize }}</h5>
+    <p class="card-text post-body">
+      {{ post().body | simpleCapitalize }}
+    </p>
+
+    <div class="col-12 text-end d-flex justify-content-end gap-2">
+      <button (click)="onDelete()" class="btn btn-sm btn-danger">
+        <i class="bi-trash3-fill"></i>
+      </button>
+      <a [routerLink]="['/update-post', post().id]" class="btn btn-sm btn-secondary"
+        ><i class="bi-pencil-fill"></i
+      ></a>
+      @if(showButtonComments){
+      <a [routerLink]="['/post-comments', post().id]" class="btn btn-sm btn-primary">
+        <i class="bi-chat-dots-fill"></i>
+      </a>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div
+  class="alert alert-dismissible text-center"
+  role="alert"
+  [class.alert-success]="role === 'success'"
+  [class.alert-danger]="role === 'error'"
+  style="z-index: 1000"
+>
+  <i
+    class="me-2"
+    [class.bi-x-circle-fill]="role === 'error'"
+    [class.bi-check-circle-fill]="role === 'success'"
+  ></i>
+  {{ message }}
+  <button type="button" class="btn-close" aria-label="Close" (click)="close()"></button>
+</div>

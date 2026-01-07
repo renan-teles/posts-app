@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100% !important;
+  margin: 0 !important;
+}
+
+/* THEME */
+.bg-white {
+  background-color: white !important;
+}
+
+.text-bg-black {
+  background-color: black;
+  color: white;
+}
+
+.text-bg-white {
+  background-color: white;
+  color: black;
+}
+
+.text-bg-dark::placeholder {
+  color: white;
+}
+.text-bg-dark {
+  border-color: black;
+}
+
+.is-invalid {
+  border-color: red !important;
+}
+.is-valid {
+  border-color: green !important;
+}

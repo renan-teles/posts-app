@@ -1,0 +1,15 @@
+<div class="col-12">
+  @if(loading()){
+  <app-loading [message]="'Carregando posts...'" />
+  } @else if(error()){
+  <app-error [message]="'Erro ao carregar posts.'" />
+  } @else {
+  <div class="row row-cols-1 row-cols-lg-2 g-3">
+    @for(post of posts(); track post.id){
+    <div class="col">
+      <app-post-card (delete)="onDelete($event)" [post]="post" />
+    </div>
+    }
+  </div>
+  }
+</div>

@@ -1,0 +1,31 @@
+<div class="col-12">
+  <div class="row row-cols-2">
+    <div class="col text-start">
+      <h2><i class="bi-postcard me-2"></i>Postagem</h2>
+    </div>
+    <div class="col d-flex justify-content-end align-items-center">
+      <a routerLink="/posts" class="btn text-danger"><i class="bi-arrow-left me-2"></i>Voltar</a>
+    </div>
+  </div>
+  <div class="col-12"><hr /></div>
+
+  <div class="col-12">
+    @if (loadingPost()) {
+    <p>Carregando post...</p>
+    } @else if (errorGetPost()) {
+    <p class="text-danger">Erro ao buscar post.</p>
+    } @else if (post(); as post) {
+    <app-post-card (delete)="deletePost($event)" [post]="post" [showButtonComments]="false" />
+    }
+  </div>
+
+  <div class="col-12 mt-5 mb-4">
+    <h2><i class="bi-chat-dots me-2"></i>Comentários</h2>
+  </div>
+
+  <app-post-comment-list
+    [loading]="loadingGetComments()"
+    [error]="errorGetComments()"
+    [comments]="comments()"
+  />
+</div>

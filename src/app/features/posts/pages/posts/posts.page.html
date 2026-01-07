@@ -1,0 +1,24 @@
+@if (alert()) {
+<app-alert [role]="alert()!.role" [message]="alert()!.message" (closed)="closeAlert()" />
+}
+
+<div class="col-12 h-100">
+  <div class="row row-cols-1 row-cols-sm-2 gap-2 gap-sm-0">
+    <div class="col text-center text-sm-start">
+      <h2><i class="bi-postcard me-2"></i>Postagens</h2>
+    </div>
+    <div class="col d-flex justify-content-center justify-content-sm-end align-items-center">
+      <a routerLink="/create-post" class="btn btn-success"
+        ><i class="bi-plus-circle me-2"></i>Criar Post</a
+      >
+    </div>
+  </div>
+  <div class="col-12"><hr /></div>
+
+  <app-post-list
+    [loading]="loadingPosts()"
+    [error]="errorGetPosts()"
+    [posts]="posts()"
+    (delete)="deletePost($event)"
+  />
+</div>
