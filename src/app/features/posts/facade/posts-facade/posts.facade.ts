@@ -80,12 +80,12 @@ export class PostsFacade {
   createPost(post: IPostFormData, onSuccess?: () => void, onError?: () => void): void {
     this.api.createPost(post).subscribe({
       next: () => {
-        this.alert.success('Post criado com sucesso.');
+        this.alert.success('Postagem criada com sucesso.');
         this.alert.timeoutToClear();
         onSuccess?.();
       },
       error: () => {
-        this.alert.error('Erro ao criar post.');
+        this.alert.error('Erro ao criar postagem.');
         this.alert.timeoutToClear();
         onError?.();
       },
@@ -96,12 +96,12 @@ export class PostsFacade {
     this.api.updatePost(id, post).subscribe({
       next: (post) => {
         this.post.set(post);
-        this.alert.success('Post editado com sucesso.');
+        this.alert.success('Postagem editada com sucesso.');
         this.alert.timeoutToClear();
         onSuccess?.();
       },
       error: () => {
-        this.alert.error('Erro ao editar post.');
+        this.alert.error('Erro ao editar postagem.');
         this.alert.timeoutToClear();
         onError?.();
       },
@@ -110,23 +110,23 @@ export class PostsFacade {
 
   deletePost(postId: number): void {
     this.confirmService
-      .confirm('Excluir post', 'Tem certeza que deseja excluir este post?', 'btn-danger')
+      .confirm('Excluir postagem', 'Tem certeza que deseja excluir este post?', 'btn-danger')
       .then(() => {
         const redirectToPosts = () => this.router.navigate(['/posts']);
         this.deletePostById(postId, redirectToPosts, redirectToPosts);
       });
   }
 
-  deletePostById(id: number, onSuccess?: () => void, onError?: () => void): void {
+  private deletePostById(id: number, onSuccess?: () => void, onError?: () => void): void {
     this.api.deletePostById(id).subscribe({
       next: () => {
-        this.alert.success('Post deletado com sucesso.');
+        this.alert.success('Postagem deletada com sucesso.');
         this.alert.timeoutToClear();
         this.loadAllPosts();
         onSuccess?.();
       },
       error: () => {
-        this.alert.error('Erro ao deletar post.');
+        this.alert.error('Erro ao deletar postagem.');
         this.alert.timeoutToClear();
         onError?.();
       },
