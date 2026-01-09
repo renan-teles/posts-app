@@ -34,11 +34,6 @@ export class PostCommentsPage {
   ngOnInit(): void {
     this.currentRoute.paramMap.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((params) => {
       const postId = Number(params.get('postId'));
-      if (!postId) {
-        this.errorGetPost.set(true);
-        this.loadingPost.set(false);
-        return;
-      }
       this.facade.loadPostById(postId);
       this.facade.loadCommentsByPostId(postId);
     });
