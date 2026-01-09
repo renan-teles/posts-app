@@ -7,7 +7,8 @@ import { AlertState } from '../../../../shared/types/alert-state.type';
 import { ConfirmDialogService } from '../../../../core/services/dialog-service/confirm-dialog-service/confirm-dialog.service';
 import { IPost } from '../../model/post.model';
 import { AlertUtils } from '../../../../shared/interfaces/alert-utils.interface';
-import { PostsFacade } from '../../facade/posts-facade/posts.facade';
+import { PostsFacade } from '../../facade/posts/posts.facade';
+import { PostsUiFacade } from '../../facade/posts-ui/posts-ui.facade';
 
 @Component({
   selector: 'app-posts.page',
@@ -17,13 +18,14 @@ import { PostsFacade } from '../../facade/posts-facade/posts.facade';
   styleUrl: './posts.page.css',
 })
 export class PostsPage implements OnInit, OnDestroy, AlertUtils {
-  private readonly alertService = inject(AlertService);
   private readonly facade = inject(PostsFacade);
+  private readonly ui = inject(PostsUiFacade);
 
   loadingPosts = this.facade.loadingPosts;
   errorGetPosts = this.facade.errorGetPosts;
   posts: Signal<IPost[]> = this.facade.posts;
 
+  private readonly alertService = inject(AlertService);
   alert: Signal<AlertState | null> = this.alertService.alert;
 
   ngOnInit(): void {
@@ -35,7 +37,7 @@ export class PostsPage implements OnInit, OnDestroy, AlertUtils {
   }
 
   deletePost(postId: number): void {
-    this.facade.deletePost(postId);
+    this.ui.deletePost(postId);
   }
 
   closeAlert(): void {
