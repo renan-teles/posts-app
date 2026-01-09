@@ -63,7 +63,6 @@ export class PostsFacade {
   }
 
   loadCommentsByPostId(postId: number | null): void {
-    console.log('ERRO');
     this.loadingGetComments.set(true);
     if (!postId) {
       this.loadingGetComments.set(false);
