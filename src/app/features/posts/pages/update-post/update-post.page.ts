@@ -8,10 +8,11 @@ import { AlertService } from '../../../../core/services/alert-service/alert.serv
 import { AlertState } from '../../../../shared/types/alert-state.type';
 import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { PostsFacade } from '../../facade/posts-facade/posts.facade';
+import { PostsFacade } from '../../facade/posts/posts.facade';
 import { AlertUtils } from '../../../../shared/interfaces/alert-utils.interface';
 import { LoadingComponent } from '../../../../shared/components/loading/loading.component';
 import { ErrorComponent } from '../../../../shared/components/error/error.component';
+import { PostsUiFacade } from '../../facade/posts-ui/posts-ui.facade';
 
 @Component({
   selector: 'app-update-post.page',
@@ -29,10 +30,12 @@ import { ErrorComponent } from '../../../../shared/components/error/error.compon
 })
 export class UpdatePostPage implements OnInit, OnDestroy, AlertUtils {
   private readonly facade = inject(PostsFacade);
+  private readonly ui = inject(PostsUiFacade);
+
   private readonly currentRoute = inject(ActivatedRoute);
-  private readonly alertService = inject(AlertService);
   private readonly destroyRef = inject(DestroyRef);
 
+  private readonly alertService = inject(AlertService);
   alert: Signal<AlertState | null> = this.alertService.alert;
 
   errorGetPost = this.facade.errorGetPost;
@@ -58,7 +61,8 @@ export class UpdatePostPage implements OnInit, OnDestroy, AlertUtils {
   updatePost(postForm: IPostFormData): void {
     const post = this.post();
     if (!post) return;
-    this.facade.updatePost(post.id, postForm);
+
+    this.ui.updatePost(post.id, postForm);
   }
 
   closeAlert(): void {

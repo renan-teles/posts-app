@@ -5,7 +5,8 @@ import { IPost } from '../../model/post.model';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { IPostComment } from '../../model/post-comment.model';
 import { PostCommentListComponent } from '../../components/lists/post-comment-list/post-comment-list.component';
-import { PostsFacade } from '../../facade/posts-facade/posts.facade';
+import { PostsFacade } from '../../facade/posts/posts.facade';
+import { PostsUiFacade } from '../../facade/posts-ui/posts-ui.facade';
 
 @Component({
   selector: 'app-post-comments.page',
@@ -16,6 +17,8 @@ import { PostsFacade } from '../../facade/posts-facade/posts.facade';
 })
 export class PostCommentsPage {
   private readonly facade = inject(PostsFacade);
+  private readonly ui = inject(PostsUiFacade);
+
   private readonly currentRoute = inject(ActivatedRoute);
   private readonly destroyRef = inject(DestroyRef);
 
@@ -42,6 +45,6 @@ export class PostCommentsPage {
   }
 
   deletePost(postId: number): void {
-    this.facade.deletePost(postId);
+    this.ui.deletePost(postId);
   }
 }
