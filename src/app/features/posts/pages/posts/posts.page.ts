@@ -1,10 +1,9 @@
 import { Component, inject, OnDestroy, OnInit, Signal } from '@angular/core';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { AlertComponent } from '../../../../shared/components/alert/alert.component';
 import { PostListComponent } from '../../components/lists/post-list/post-list.component';
 import { AlertService } from '../../../../core/services/alert-service/alert.service';
 import { AlertState } from '../../../../shared/types/alert-state.type';
-import { ConfirmDialogService } from '../../../../core/services/dialog-service/confirm-dialog-service/confirm-dialog.service';
 import { IPost } from '../../model/post.model';
 import { AlertUtils } from '../../../../shared/interfaces/alert-utils.interface';
 import { PostsFacade } from '../../facade/posts/posts.facade';
