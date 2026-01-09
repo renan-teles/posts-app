@@ -42,8 +42,13 @@ export class PostsFacade {
       });
   }
 
-  loadPostById(id: number): void {
+  loadPostById(id: number | null): void {
     this.loadingPost.set(true);
+    if (!id) {
+      this.loadingPost.set(false);
+      this.errorGetPost.set(true);
+      return;
+    }
 
     this.api
       .getPostById(id)
@@ -57,8 +62,14 @@ export class PostsFacade {
       });
   }
 
-  loadCommentsByPostId(postId: number): void {
+  loadCommentsByPostId(postId: number | null): void {
+    console.log('ERRO');
     this.loadingGetComments.set(true);
+    if (!postId) {
+      this.loadingGetComments.set(false);
+      this.errorGetComments.set(true);
+      return;
+    }
 
     this.api
       .getCommentsByPostId(postId)
